@@ -1,11 +1,12 @@
 import codecs  # noqa: A005
 import encodings
-from collections.abc import Buffer
+
+from _typeshed import ReadableBuffer
 
 from pyjsx.transpiler import transpile
 
 
-def pyjsx_decode(input: Buffer, errors: str = "strict") -> tuple[str, int]:  # noqa: A002, ARG001
+def pyjsx_decode(input: ReadableBuffer, errors: str = "strict") -> tuple[str, int]:  # noqa: A002, ARG001
     byte_content = bytes(input)
     return transpile(byte_content.decode("utf-8")), len(byte_content)
 
