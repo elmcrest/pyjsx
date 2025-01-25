@@ -1,11 +1,13 @@
-import codecs
+import codecs  # noqa: A005
 import encodings
+from collections.abc import Buffer
 
 from pyjsx.transpiler import transpile
 
 
-def pyjsx_decode(input: memoryview, errors: str = "strict") -> tuple[str, int]:  # noqa: A002, ARG001
-    return transpile(bytes(input).decode("utf-8")), len(input)
+def pyjsx_decode(input: Buffer, errors: str = "strict") -> tuple[str, int]:  # noqa: A002, ARG001
+    byte_content = bytes(input)
+    return transpile(byte_content.decode("utf-8")), len(byte_content)
 
 
 def pyjsx_search_function(encoding: str) -> codecs.CodecInfo | None:
