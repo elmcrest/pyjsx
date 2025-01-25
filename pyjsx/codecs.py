@@ -1,7 +1,12 @@
-import codecs  # noqa: A005
-import encodings
+from __future__ import annotations  # noqa: A005
 
-from _typeshed import ReadableBuffer
+import codecs
+import encodings
+from typing import TYPE_CHECKING
+
+
+if TYPE_CHECKING:
+    from _typeshed import ReadableBuffer
 
 from pyjsx.transpiler import transpile
 
